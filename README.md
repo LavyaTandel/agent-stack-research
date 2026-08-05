@@ -86,6 +86,30 @@ Adapters tested and passing (20/20):
 
 See `tests/PORTABILITY-REPORT.md` for full results.
 
+## Diagrams
+
+### Progressive Loading — Before/After
+
+![Progressive Loading](diagrams/01-progressive-loading.gif)
+
+### Activation Comparison — Heuristic vs Two-Tier
+
+![Activation Comparison](diagrams/02-activation-comparison.gif)
+
+### Router Protocol — find_skills / load_skill
+
+![Router Protocol](diagrams/03-router-protocol.gif)
+
+### Multi-Harness Adapters
+
+![Multi-Harness](diagrams/04-multi-harness.gif)
+
+### MCP Stateless Migration
+
+![MCP Stateless](diagrams/05-mcp-stateless.gif)
+
+> Static SVGs also available in `diagrams/`. Interactive version: open `diagrams/animations.html`.
+
 ## The shape of the moat
 
 **Wedge** — a multi-harness plugin that demos the routing layer ("your stack,
