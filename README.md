@@ -51,9 +51,35 @@ docs/
 ├── 04-harness-landscape.md              ← OpenCode / Claude Code / Codex / Grok Build
 ├── 05-routing-registry-patterns.md      ← selectors, registries, two-tier routing
 └── diagrams.md                          ← protocol + routing flows (Mermaid)
+diagrams/
+├── 01-progressive-loading.svg           ← before/after context bloat visualization
+├── 02-activation-comparison.svg         ← heuristic vs two-tier routing comparison
+├── 03-router-protocol.svg               ← find_skills/load_skill MCP protocol flow
+├── 04-multi-harness.svg                 ← adapter architecture across harnesses
+├── 05-mcp-stateless.svg                 ← MCP stateless migration (stdio vs HTTP)
+└── animations.html                      ← animated dark-theme diagram page
 spec/
 └── REGISTRY-v0.1.md                     ← open skill-registry format draft (MIT/Apache-2.0)
+tests/
+├── adapters/
+│   ├── opencode-adapter.js              ← OpenCode adapter (native path)
+│   ├── claude-code-adapter.js           ← Claude Code adapter (path remap)
+│   └── codex-adapter.js                 ← Codex adapter (hash-trusted paths)
+├── test-portability.js                  ← 20-test cross-harness validation suite
+└── PORTABILITY-REPORT.md                ← test results summary
 ```
+
+## Cross-harness portability
+
+Adapters tested and passing (20/20):
+
+| Harness | Path convention | Adapter |
+|---------|-----------------|---------|
+| OpenCode | `~/.config/opencode/skills/<name>/SKILL.md` | `opencode-adapter.js` |
+| Claude Code | `~/.claude/skills/<name>/SKILL.md` | `claude-code-adapter.js` |
+| Codex | `~/.codex/skills/<hash>/<name>/SKILL.md` | `codex-adapter.js` |
+
+See `tests/PORTABILITY-REPORT.md` for full results.
 
 ## The shape of the moat
 

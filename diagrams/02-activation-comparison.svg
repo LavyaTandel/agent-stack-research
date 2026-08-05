@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <style>
+    .box { rx: 8; ry: 8; stroke-width: 2; }
+    .today { fill: #ffebee; stroke: #f44336; }
+    .router { fill: #e8f5e9; stroke: #4caf50; }
+    .label { font-size: 14px; font-weight: 600; text-anchor: middle; }
+    .sub { font-size: 11px; fill: #666; text-anchor: middle; }
+    .arrow { stroke: #555; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+    .dashed { stroke-dasharray: 5,3; }
+    .x { stroke: #f44336; stroke-width: 3; }
+  </style>
+
+  <text x="400" y="25" class="label" font-size="16">Skill Activation: Today vs With Router</text>
+
+  <!-- Today column -->
+  <text x="200" y="55" class="label" font-size="13" fill="#c62828">TODAY (config-time)</text>
+
+  <rect x="100" y="70" width="200" height="35" class="box today"/>
+  <text x="200" y="92" class="label" font-size="11">Session start</text>
+
+  <rect x="100" y="115" width="200" height="35" class="box today"/>
+  <text x="200" y="137" class="label" font-size="11">Scan 100+ SKILL.md descriptions</text>
+
+  <rect x="100" y="160" width="200" height="35" class="box today"/>
+  <text x="200" y="182" class="label" font-size="11">Match FIRST user message only</text>
+
+  <rect x="100" y="215" width="200" height="35" class="box today"/>
+  <text x="200" y="237" class="label" font-size="11">Load skill — stays all session</text>
+
+  <line x1="200" y1="105" x2="200" y2="113" class="arrow"/>
+  <line x1="200" y1="150" x2="200" y2="158" class="arrow"/>
+  <line x1="200" y1="195" x2="200" y2="213" class="arrow"/>
+
+  <rect x="100" y="270" width="200" height="35" class="box today"/>
+  <text x="200" y="292" class="label" font-size="11">Mid-session subtask → never loaded</text>
+  <line x1="100" y1="287" x2="60" y2="287" class="x"/>
+  <line x1="70" y1="277" x2="90" y2="297" class="x"/>
+
+  <!-- Router column -->
+  <text x="600" y="55" class="label" font-size="13" fill="#2e7d32">WITH ROUTER (task-time)</text>
+
+  <rect x="500" y="70" width="200" height="35" class="box router"/>
+  <text x="600" y="92" class="label" font-size="11">Any task, any agent</text>
+
+  <rect x="500" y="115" width="200" height="35" class="box router"/>
+  <text x="600" y="137" class="label" font-size="11">find_skills(task)</text>
+
+  <rect x="500" y="160" width="200" height="35" class="box router"/>
+  <text x="600" y="182" class="label" font-size="11">Registry index: tag+keyword (~1ms)</text>
+
+  <rect x="500" y="215" width="200" height="35" class="box router"/>
+  <text x="600" y="237" class="label" font-size="11">load_skill — only chosen enters context</text>
+
+  <rect x="500" y="270" width="200" height="35" class="box router"/>
+  <text x="600" y="292" class="label" font-size="11">Skill used, then falls out (strict-lazy)</text>
+
+  <line x1="600" y1="105" x2="600" y2="113" class="arrow"/>
+  <line x1="600" y1="150" x2="600" y2="158" class="arrow"/>
+  <line x1="600" y1="195" x2="600" y2="213" class="arrow"/>
+  <line x1="600" y1="250" x2="600" y2="268" class="arrow"/>
+</svg>

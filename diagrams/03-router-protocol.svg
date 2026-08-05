@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2196f3"/>
+    </marker>
+  </defs>
+  <style>
+    .box { rx: 8; ry: 8; stroke-width: 2; }
+    .agent { fill: #e3f2fd; stroke: #2196f3; }
+    .router { fill: #e8f5e9; stroke: #4caf50; }
+    .registry { fill: #fff3e0; stroke: #ff9800; }
+    .skill { fill: #fce4ec; stroke: #e91e63; }
+    .label { font-size: 13px; font-weight: 600; text-anchor: middle; }
+    .sub { font-size: 10px; fill: #666; text-anchor: middle; }
+    .num { font-size: 18px; font-weight: 700; fill: #333; text-anchor: middle; }
+    .arrow { stroke: #555; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+    .arrow-b { stroke: #2196f3; stroke-width: 1.5; fill: none; marker-end: url(#arrow-blue); }
+  </style>
+
+  <text x="400" y="25" class="label" font-size="16">Skill-Router Protocol (v0.1)</text>
+
+  <!-- Timeline columns -->
+  <rect x="50" y="40" width="120" height="30" class="box agent"/>
+  <text x="110" y="60" class="label" font-size="11">Agent</text>
+
+  <rect x="300" y="40" width="200" height="30" class="box router"/>
+  <text x="400" y="60" class="label" font-size="11">Skill Router (MCP)</text>
+
+  <rect x="580" y="40" width="180" height="30" class="box registry"/>
+  <text x="670" y="60" class="label" font-size="11">Registry (JSON)</text>
+
+  <rect x="580" y="350" width="180" height="30" class="box skill"/>
+  <text x="670" y="370" class="label" font-size="11">SKILL.md (on disk)</text>
+
+  <!-- Lifelines -->
+  <line x1="110" y1="70" x2="110" y2="340" stroke="#2196f3" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="400" y1="70" x2="400" y2="340" stroke="#4caf50" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="670" y1="70" x2="670" y2="340" stroke="#ff9800" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Step 1: find_skills -->
+  <text x="15" y="110" class="num">1</text>
+  <line x1="112" y1="107" x2="398" y2="107" class="arrow"/>
+  <text x="255" y="100" class="sub">find_skills("responsive card")</text>
+
+  <!-- Step 2: tag scan -->
+  <text x="260" y="145" class="num">2</text>
+  <line x1="402" y1="142" x2="668" y2="142" class="arrow"/>
+  <text x="535" y="135" class="sub">keyword/tag scan + alias expansion</text>
+
+  <!-- Step 3: candidates back -->
+  <text x="260" y="185" class="num">3</text>
+  <line x1="668" y1="182" x2="402" y2="182" class="arrow-b"/>
+  <text x="535" y="175" class="sub">3 candidates (name, one-liner, tags)</text>
+
+  <!-- Step 4: back to agent -->
+  <text x="15" y="215" class="num">4</text>
+  <line x1="398" y1="212" x2="112" y2="212" class="arrow-b"/>
+  <text x="255" y="205" class="sub">[{design-taste-frontend, ...}]</text>
+
+  <!-- Step 5: load_skill -->
+  <text x="15" y="255" class="num">5</text>
+  <line x1="112" y1="252" x2="398" y2="252" class="arrow"/>
+  <text x="255" y="245" class="sub">load_skill("design-taste-frontend")</text>
+
+  <!-- Step 6: read file -->
+  <text x="260" y="290" class="num">6</text>
+  <line x1="402" y1="287" x2="668" y2="348" class="arrow"/>
+  <text x="535" y="310" class="sub">read SKILL.md</text>
+
+  <!-- Step 7: body back -->
+  <text x="260" y="330" class="num">7</text>
+  <line x1="668" y1="337" x2="402" y2="337" class="arrow-b"/>
+
+  <!-- Step 8: back to agent -->
+  <text x="15" y="335" class="num">8</text>
+  <line x1="398" y1="332" x2="112" y2="332" class="arrow-b"/>
+  <text x="255" y="325" class="sub">body + allowed-tools</text>
+
+  <text x="400" y="395" class="sub">Skill instructions in context; body falls out after task (strict-lazy)</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="system-ui, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <style>
+    .box { rx: 8; ry: 8; stroke-width: 2; }
+    .idx { fill: #e8f5e9; stroke: #4caf50; }
+    .det { fill: #fff3e0; stroke: #ff9800; }
+    .agent { fill: #e3f2fd; stroke: #2196f3; }
+    .rt { fill: #f3e5f5; stroke: #9c27b0; }
+    .srv { fill: #fce4ec; stroke: #e91e63; }
+    .label { font-size: 14px; font-weight: 600; text-anchor: middle; }
+    .sub { font-size: 11px; fill: #666; text-anchor: middle; }
+    .arrow { stroke: #555; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+    .dashed { stroke-dasharray: 5,3; }
+  </style>
+
+  <text x="400" y="25" class="label" font-size="16">Progressive Tool Loading: Index → Lazy Detail</text>
+
+  <rect x="250" y="50" width="300" height="50" class="box idx"/>
+  <text x="400" y="72" class="label">INDEX (always in context)</text>
+  <text x="400" y="88" class="sub">tool name + one-liner · 10–30 tokens each</text>
+
+  <rect x="250" y="120" width="300" height="50" class="box det"/>
+  <text x="400" y="142" class="label">LAZY DETAIL (on demand)</text>
+  <text x="400" y="158" class="sub">full schema / SKILL.md body · falls out after use</text>
+
+  <rect x="30" y="85" width="100" height="40" class="box agent"/>
+  <text x="80" y="110" class="label" font-size="12">Agent</text>
+
+  <rect x="670" y="85" width="100" height="40" class="box srv"/>
+  <text x="720" y="110" class="label" font-size="12">MCP Server</text>
+
+  <rect x="350" y="200" width="100" height="40" class="box rt"/>
+  <text x="400" y="225" class="label" font-size="12">Runtime</text>
+
+  <line x1="130" y1="105" x2="248" y2="75" class="arrow"/>
+  <text x="185" y="82" class="sub">call X</text>
+
+  <line x1="552" y1="75" x2="668" y2="105" class="arrow"/>
+  <text x="610" y="75" class="sub">execute</text>
+
+  <line x1="250" y1="220" x2="132" y2="127" class="arrow"/>
+  <text x="170" y="185" class="sub">result</text>
+
+  <line x1="550" y1="150" x2="590" y2="200" class="arrow"/>
+
+  <line x1="400" y1="200" x2="400" y2="172" class="arrow dashed"/>
+  <text x="430" y="190" class="sub">fetch schema</text>
+</svg>

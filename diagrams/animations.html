@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Stack Research — Animated Diagrams</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 2rem; }
+  h1 { text-align: center; margin-bottom: 2rem; font-size: 1.8rem; color: #fff; }
+  .diagram { background: #1a1a1a; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; border: 1px solid #333; }
+  .diagram h2 { font-size: 1.2rem; margin-bottom: 1rem; color: #4caf50; }
+  svg { width: 100%; max-width: 800px; display: block; margin: 0 auto; }
+
+  /* Animation 1: Progressive Loading */
+  @keyframes agentCall { 0% { opacity: 1; } 100% { opacity: 1; } }
+  @keyframes flowRight {
+    0% { transform: translateX(-20px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes flowLeft {
+    0% { transform: translateX(20px); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes fadeIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+  @keyframes slideUp { 0% { transform: translateY(30px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+  @keyframes highlight {
+    0%, 30% { filter: brightness(1); }
+    50%, 70% { filter: brightness(1.3); }
+    100% { filter: brightness(1); }
+  }
+  @keyframes drawLine { 0% { stroke-dashoffset: 100; } 100% { stroke-dashoffset: 0; } }
+  @keyframes stepFlow {
+    0% { opacity: 0; transform: translateX(-10px); }
+    10% { opacity: 1; transform: translateX(0); }
+    90% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+
+  .anim-box { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+  .anim-box:nth-child(1) { animation-delay: 0.1s; }
+  .anim-box:nth-child(2) { animation-delay: 0.3s; }
+  .anim-box:nth-child(3) { animation-delay: 0.5s; }
+  .anim-box:nth-child(4) { animation-delay: 0.7s; }
+  .anim-box:nth-child(5) { animation-delay: 0.9s; }
+
+  .step { animation: stepFlow 4s ease-in-out infinite; opacity: 0; }
+  .step:nth-child(1) { animation-delay: 0s; }
+  .step:nth-child(2) { animation-delay: 0.5s; }
+  .step:nth-child(3) { animation-delay: 1s; }
+  .step:nth-child(4) { animation-delay: 1.5s; }
+  .step:nth-child(5) { animation-delay: 2s; }
+  .step:nth-child(6) { animation-delay: 2.5s; }
+  .step:nth-child(7) { animation-delay: 3s; }
+  .step:nth-child(8) { animation-delay: 3.5s; }
+
+  .pulse { animation: pulse 2s ease-in-out infinite; }
+</style>
+</head>
+<body>
+<h1>Agent Stack Research — Animated Architecture</h1>
+
+<div class="diagram">
+  <h2>1. Progressive Tool Loading</h2>
+  <svg viewBox="0 0 800 280" font-family="system-ui, sans-serif">
+    <defs>
+      <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/></marker>
+    </defs>
+    <style>
+      .box { rx: 8; ry: 8; stroke-width: 2; }
+      .idx { fill: #1b5e20; stroke: #4caf50; }
+      .det { fill: #e65100; stroke: #ff9800; }
+      .agent { fill: #0d47a1; stroke: #2196f3; }
+      .srv { fill: #880e4f; stroke: #e91e63; }
+      .label { font-size: 13px; font-weight: 600; fill: #fff; text-anchor: middle; }
+      .sub { font-size: 10px; fill: #aaa; text-anchor: middle; }
+      .arrow { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#a1); }
+    </style>
+    <rect x="30" y="100" width="100" height="40" class="box agent anim-box"/>
+    <text x="80" y="125" class="label">Agent</text>
+    <rect x="250" y="50" width="300" height="40" class="box idx anim-box"/>
+    <text x="400" y="75" class="label">INDEX (always in context)</text>
+    <text x="400" y="90" class="sub">name + one-liner · 10–30 tok</text>
+    <rect x="250" y="130" width="300" height="40" class="box det anim-box"/>
+    <text x="400" y="155" class="label">LAZY DETAIL (on demand)</text>
+    <text x="400" y="170" class="sub">full schema / SKILL.md body</text>
+    <rect x="670" y="100" width="100" height="40" class="box srv anim-box"/>
+    <text x="720" y="125" class="label">MCP Server</text>
+    <line x1="130" y1="120" x2="248" y2="70" class="arrow anim-box"/>
+    <line x1="552" y1="70" x2="668" y2="115" class="arrow anim-box"/>
+    <line x1="130" y1="120" x2="248" y2="150" class="arrow anim-box" stroke-dasharray="4,3"/>
+    <text x="190" y="140" class="sub">fetch</text>
+  </svg>
+</div>
+
+<div class="diagram">
+  <h2>2. Skill Activation: Today vs With Router</h2>
+  <svg viewBox="0 0 800 320" font-family="system-ui, sans-serif">
+    <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/></marker></defs>
+    <style>.box { rx: 8; ry: 8; stroke-width: 2; } .today { fill: #b71c1c; stroke: #f44336; } .router { fill: #1b5e20; stroke: #4caf50; } .label { font-size: 12px; font-weight: 600; fill: #fff; text-anchor: middle; } .arrow { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#a2); }</style>
+    <text x="200" y="30" class="label" fill="#f44336" font-size="14">TODAY (config-time)</text>
+    <rect x="70" y="45" width="260" height="30" class="box today step"/>
+    <text x="200" y="65" class="label" font-size="11">Session start → scan 100+ SKILL.md</text>
+    <rect x="70" y="85" width="260" height="30" class="box today step"/>
+    <text x="200" y="105" class="label" font-size="11">Match FIRST user message only</text>
+    <rect x="70" y="125" width="260" height="30" class="box today step"/>
+    <text x="200" y="145" class="label" font-size="11">Load skill — stays all session</text>
+    <rect x="70" y="165" width="260" height="30" class="box today step"/>
+    <text x="200" y="185" class="label" font-size="11">Mid-session subtask → ✗ never loaded</text>
+    <line x1="200" y1="75" x2="200" y2="83" class="arrow"/>
+    <line x1="200" y1="115" x2="200" y2="123" class="arrow"/>
+    <line x1="200" y1="155" x2="200" y2="163" class="arrow"/>
+
+    <text x="600" y="30" class="label" fill="#4caf50" font-size="14">WITH ROUTER (task-time)</text>
+    <rect x="470" y="45" width="260" height="30" class="box router step"/>
+    <text x="600" y="65" class="label" font-size="11">Any task, any agent → find_skills()</text>
+    <rect x="470" y="85" width="260" height="30" class="box router step"/>
+    <text x="600" y="105" class="label" font-size="11">Registry: tag+keyword match (~1ms)</text>
+    <rect x="470" y="125" width="260" height="30" class="box router step"/>
+    <text x="600" y="145" class="label" font-size="11">load_skill — only chosen enters ctx</text>
+    <rect x="470" y="165" width="260" height="30" class="box router step"/>
+    <text x="600" y="185" class="label" font-size="11">Skill used, then falls out (strict-lazy)</text>
+    <line x1="600" y1="75" x2="600" y2="83" class="arrow"/>
+    <line x1="600" y1="115" x2="600" y2="123" class="arrow"/>
+    <line x1="600" y1="155" x2="600" y2="163" class="arrow"/>
+  </svg>
+</div>
+
+<div class="diagram">
+  <h2>3. Skill-Router Protocol Sequence</h2>
+  <svg viewBox="0 0 800 380" font-family="system-ui, sans-serif">
+    <defs><marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/></marker><marker id="a3b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2196f3"/></marker></defs>
+    <style>.box { rx: 8; ry: 8; stroke-width: 2; } .agent { fill: #0d47a1; stroke: #2196f3; } .router { fill: #1b5e20; stroke: #4caf50; } .reg { fill: #e65100; stroke: #ff9800; } .skill { fill: #880e4f; stroke: #e91e63; } .label { font-size: 12px; font-weight: 600; fill: #fff; text-anchor: middle; } .sub { font-size: 10px; fill: #aaa; text-anchor: middle; } .num { font-size: 16px; font-weight: 700; fill: #4caf50; text-anchor: middle; } .arrow { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#a3); } .arrow-b { stroke: #2196f3; stroke-width: 1.5; fill: none; marker-end: url(#a3b); }</style>
+    <rect x="40" y="20" width="120" height="28" class="box agent anim-box"/><text x="100" y="39" class="label" font-size="11">Agent</text>
+    <rect x="300" y="20" width="200" height="28" class="box router anim-box"/><text x="400" y="39" class="label" font-size="11">Skill Router (MCP)</text>
+    <rect x="580" y="20" width="180" height="28" class="box reg anim-box"/><text x="670" y="39" class="label" font-size="11">Registry (JSON)</text>
+    <rect x="580" y="340" width="180" height="28" class="box skill anim-box"/><text x="670" y="359" class="label" font-size="11">SKILL.md</text>
+    <line x1="100" y1="48" x2="100" y2="330" stroke="#2196f3" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="400" y1="48" x2="400" y2="330" stroke="#4caf50" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="670" y1="48" x2="670" y2="330" stroke="#ff9800" stroke-width="1" stroke-dasharray="4,4"/>
+    <g class="step"><text x="15" y="85" class="num">1</text><line x1="102" y1="82" x2="398" y2="82" class="arrow"/><text x="250" y="75" class="sub">find_skills("responsive card")</text></g>
+    <g class="step"><text x="260" y="130" class="num">2</text><line x1="402" y1="127" x2="668" y2="127" class="arrow"/><text x="535" y="120" class="sub">tag scan + alias expansion</text></g>
+    <g class="step"><text x="260" y="175" class="num">3</text><line x1="668" y1="172" x2="402" y2="172" class="arrow-b"/><text x="535" y="165" class="sub">3 candidates (name, one-liner)</text></g>
+    <g class="step"><text x="15" y="210" class="num">4</text><line x1="398" y1="207" x2="102" y2="207" class="arrow-b"/><text x="250" y="200" class="sub">[{design-taste-frontend, ...}]</text></g>
+    <g class="step"><text x="15" y="250" class="num">5</text><line x1="102" y1="247" x2="398" y2="247" class="arrow"/><text x="250" y="240" class="sub">load_skill("design-taste-frontend")</text></g>
+    <g class="step"><text x="260" y="290" class="num">6</text><line x1="402" y1="287" x2="668" y2="338" class="arrow"/><text x="535" y="310" class="sub">read SKILL.md</text></g>
+    <g class="step"><text x="15" y="325" class="num">7</text><line x1="398" y1="322" x2="102" y2="322" class="arrow-b"/><text x="250" y="315" class="sub">body + allowed-tools</text></g>
+    <text x="400" y="378" class="sub">Body falls out after task (strict-lazy)</text>
+  </svg>
+</div>
+
+<div class="diagram">
+  <h2>4. Multi-Harness Portability</h2>
+  <svg viewBox="0 0 800 320" font-family="system-ui, sans-serif">
+    <defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/></marker></defs>
+    <style>.box { rx: 8; ry: 8; stroke-width: 2; } .core { fill: #1a237e; stroke: #3f51b5; } .adapter { fill: #1b5e20; stroke: #4caf50; } .harness { fill: #e65100; stroke: #ff9800; } .label { font-size: 12px; font-weight: 600; fill: #fff; text-anchor: middle; } .sub { font-size: 10px; fill: #aaa; text-anchor: middle; } .arrow { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#a4); }</style>
+    <rect x="300" y="30" width="200" height="55" class="box core pulse"/>
+    <text x="400" y="52" class="label">Shared Core</text>
+    <text x="400" y="68" class="sub">registry + router protocol</text>
+    <text x="400" y="80" class="sub">harness-agnostic</text>
+    <rect x="40" y="150" width="150" height="35" class="box adapter anim-box"/><text x="115" y="172" class="label" font-size="10">Adapter: OpenCode</text>
+    <rect x="220" y="150" width="150" height="35" class="box adapter anim-box"/><text x="295" y="172" class="label" font-size="10">Adapter: Codex</text>
+    <rect x="430" y="150" width="150" height="35" class="box adapter anim-box"/><text x="505" y="172" class="label" font-size="10">Adapter: Grok Build</text>
+    <rect x="620" y="150" width="150" height="35" class="box adapter anim-box"/><text x="695" y="172" class="label" font-size="10">Adapter: Claude Code</text>
+    <rect x="40" y="240" width="150" height="35" class="box harness anim-box"/><text x="115" y="262" class="label" font-size="10">OpenCode</text>
+    <rect x="220" y="240" width="150" height="35" class="box harness anim-box"/><text x="295" y="262" class="label" font-size="10">Codex</text>
+    <rect x="430" y="240" width="150" height="35" class="box harness anim-box"/><text x="505" y="262" class="label" font-size="10">Grok Build</text>
+    <rect x="620" y="240" width="150" height="35" class="box harness anim-box"/><text x="695" y="262" class="label" font-size="10">Claude Code</text>
+    <line x1="340" y1="85" x2="115" y2="148" class="arrow anim-box"/>
+    <line x1="380" y1="85" x2="295" y2="148" class="arrow anim-box"/>
+    <line x1="420" y1="85" x2="505" y2="148" class="arrow anim-box"/>
+    <line x1="460" y1="85" x2="695" y2="148" class="arrow anim-box"/>
+    <line x1="115" y1="185" x2="115" y2="238" class="arrow"/>
+    <line x1="295" y1="185" x2="295" y2="238" class="arrow"/>
+    <line x1="505" y1="185" x2="505" y2="238" class="arrow"/>
+    <line x1="695" y1="185" x2="695" y2="238" class="arrow"/>
+    <text x="400" y="305" class="sub">Standards get adopted · Forks get absorbed</text>
+  </svg>
+</div>
+
+<div class="diagram">
+  <h2>5. MCP 2026-07-28: Stateless Architecture</h2>
+  <svg viewBox="0 0 800 280" font-family="system-ui, sans-serif">
+    <defs><marker id="a5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/></marker></defs>
+    <style>.box { rx: 8; ry: 8; stroke-width: 2; } .before { fill: #b71c1c; stroke: #f44336; } .after { fill: #1b5e20; stroke: #4caf50; } .label { font-size: 12px; font-weight: 600; fill: #fff; text-anchor: middle; } .sub { font-size: 10px; fill: #aaa; text-anchor: middle; } .arrow { stroke: #666; stroke-width: 1.5; fill: none; marker-end: url(#a5); } .vs { font-size: 24px; font-weight: 700; fill: #4caf50; text-anchor: middle; }</style>
+    <text x="180" y="25" class="label" fill="#f44336" font-size="13">BEFORE (2025)</text>
+    <text x="620" y="25" class="label" fill="#4caf50" font-size="13">AFTER (2026-07-28)</text>
+    <rect x="40" y="40" width="280" height="28" class="box before anim-box"/><text x="180" y="59" class="label" font-size="10">initialize handshake</text>
+    <rect x="40" y="75" width="280" height="28" class="box before anim-box"/><text x="180" y="94" class="label" font-size="10">Mcp-Session-Id → sticky sessions</text>
+    <rect x="40" y="110" width="280" height="28" class="box before anim-box"/><text x="180" y="129" class="label" font-size="10">every request → one instance</text>
+    <rect x="40" y="145" width="280" height="28" class="box before anim-box"/><text x="180" y="164" class="label" font-size="10">session stores at gateways</text>
+    <line x1="180" y1="68" x2="180" y2="73" class="arrow"/>
+    <line x1="180" y1="103" x2="180" y2="108" class="arrow"/>
+    <line x1="180" y1="138" x2="180" y2="143" class="arrow"/>
+    <text x="400" y="115" class="vs">→</text>
+    <rect x="480" y="40" width="280" height="28" class="box after anim-box"/><text x="620" y="59" class="label" font-size="10">self-contained request + clientInfo</text>
+    <rect x="480" y="75" width="280" height="28" class="box after anim-box"/><text x="620" y="94" class="label" font-size="10">Mcp-Method / Mcp-Name headers</text>
+    <rect x="480" y="110" width="280" height="28" class="box after anim-box"/><text x="620" y="129" class="label" font-size="10">any instance handles any request</text>
+    <rect x="480" y="145" width="280" height="28" class="box after anim-box"/><text x="620" y="164" class="label" font-size="10">tools/list cached via ttlMs</text>
+    <line x1="620" y1="68" x2="620" y2="73" class="arrow"/>
+    <line x1="620" y1="103" x2="620" y2="108" class="arrow"/>
+    <line x1="620" y1="138" x2="620" y2="143" class="arrow"/>
+    <text x="400" y="210" class="sub">Round-robin LB · No session store · Local stdio barely changes</text>
+  </svg>
+</div>
+</body>
+</html>
