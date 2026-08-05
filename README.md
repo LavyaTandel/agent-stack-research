@@ -53,10 +53,15 @@ docs/
 └── diagrams.md                          ← protocol + routing flows (Mermaid)
 diagrams/
 ├── 01-progressive-loading.svg           ← before/after context bloat visualization
+├── 01-progressive-loading.gif           ← animated version
 ├── 02-activation-comparison.svg         ← heuristic vs two-tier routing comparison
+├── 02-activation-comparison.gif         ← animated version
 ├── 03-router-protocol.svg               ← find_skills/load_skill MCP protocol flow
+├── 03-router-protocol.gif               ← animated version
 ├── 04-multi-harness.svg                 ← adapter architecture across harnesses
+├── 04-multi-harness.gif                 ← animated version
 ├── 05-mcp-stateless.svg                 ← MCP stateless migration (stdio vs HTTP)
+├── 05-mcp-stateless.gif                 ← animated version
 └── animations.html                      ← animated dark-theme diagram page
 spec/
 └── REGISTRY-v0.1.md                     ← open skill-registry format draft (MIT/Apache-2.0)
