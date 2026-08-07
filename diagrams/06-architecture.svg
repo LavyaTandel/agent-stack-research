@@ -19,10 +19,10 @@
     Fast Path (Tag + Keyword)
   </text>
   <text x="210" y="165" text-anchor="middle" fill="#a0a0a0" font-size="11">
-    Tokenize query → Match tags/summary → Score
+    Tokenize query -&gt; Match tags/summary -&gt; Score
   </text>
   <text x="210" y="185" text-anchor="middle" fill="#a0a0a0" font-size="11">
-    Threshold: score ≥ 2 → Return (<1ms)
+    Threshold: score >= 2 -&gt; Return (&lt;1ms)
   </text>
   
   <!-- TF-IDF Fallback -->
